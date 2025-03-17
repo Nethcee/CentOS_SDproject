@@ -1,50 +1,92 @@
 /* Full-page blue background */
 body {
-    background: linear-gradient(135deg, #007bff, #0056b3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: sans-serif;
-  }
-  
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: sans-serif;
+}
 
-  
-  /* Logo container: flex layout for side-by-side placement */
-  .logo-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding-top: 1rem;
+/* Logo container */
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Each logo is wrapped */
+.logo-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Divider line */
+.divider {
+  width: 3px;
+  height: 0;
+  background-color: #dadada;
+  opacity: 0;
+}
+
+/* Logos (hidden initially) */
+.logo {
+  height: auto;
+  position: relative;
+  opacity: 0;
+}
+
+/* Left logo */
+.logo-left {
+  width: 550px;
+  transform: translateX(50%);
+  opacity: 0;
+}
+
+/* Right logo */
+.logo-right {
+  width: 350px;
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+/* Animations */
+@keyframes stretchDivider {
+  from {
+    height: 0;
+    opacity: 0;
   }
-  
-  /* Each logo is wrapped to help center them evenly */
-  .logo-wrapper {
-    flex: 1;
-    display: flex;
-    justify-content: center;
+  to {
+    height: 400px;
+    opacity: 1;
   }
-  
-  /* Divider line between the logos */
-  .divider {
-    width: 3px;         /* Thickness of the line */
-    height: 200px;      /* Adjust height as needed */
-    background-color: #dadada;
+}
+
+@keyframes exitLeft {
+  from {
+    transform: translateX(50%);
+    opacity: 0;
   }
-  
-  /* Logos: Adjust the size as desired */
-  .logo {
-    width: 350px;  /* Adjust this value for larger logos */
-    height: auto;
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
-  
-  /* Center the splash header text */
-  .splash-header {
-    font-size: 20px; /* Use a valid unit like px */
-    text-align: center;
-    margin-top: 1rem;
-    width: 100%;
+}
+
+@keyframes exitRight {
+  from {
+    transform: translateX(-50%);
+    opacity: 0;
   }
-  
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

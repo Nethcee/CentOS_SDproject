@@ -1,0 +1,50 @@
+/* Full-page blue background */
+body {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: sans-serif;
+  }
+  
+
+  
+  /* Logo container: flex layout for side-by-side placement */
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-top: 1rem;
+  }
+  
+  /* Each logo is wrapped to help center them evenly */
+  .logo-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Divider line between the logos */
+  .divider {
+    width: 3px;         /* Thickness of the line */
+    height: 200px;      /* Adjust height as needed */
+    background-color: #dadada;
+  }
+  
+  /* Logos: Adjust the size as desired */
+  .logo {
+    width: 350px;  /* Adjust this value for larger logos */
+    height: auto;
+  }
+  
+  /* Center the splash header text */
+  .splash-header {
+    font-size: 20px; /* Use a valid unit like px */
+    text-align: center;
+    margin-top: 1rem;
+    width: 100%;
+  }
+  

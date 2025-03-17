@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dashboard.css" />
+    <script>
+      function showSection(sectionId) {
+        let sections = document.querySelectorAll(".content-section");
+        sections.forEach((section) => {
+          section.style.display = "none";
+        });
+        document.getElementById(sectionId).style.display = "block";
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class="container">
+      
+      <!-- Sidebar Section -->
+      <div class="sidebar">
+        <div class="logo">
+          <h1>Admin<span>Panel</span></h1>
+        </div>
+
+        <!-- Navigation Menu -->
+        <div class="nav-menu">
+          <div class="menu-heading">Main</div>
+          <div class="nav-item active" onclick="showSection('dashboard-section')">
+            <i class="fas fa-chart-pie"></i>
+            <span>Dashboard</span>
+          </div>
+          <div class="nav-item" onclick="showSection('users-section')">
+            <i class="fas fa-users"></i>
+            <span>Users</span>
+          </div>
+          <div class="nav-item" onclick="showSection('sales-section')">
+            <i class="fas fa-coins"></i>
+            <span>Sales</span>
+          </div>
+          <div class="nav-item" onclick="showSection('expenses-section')">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Expenses</span>
+          </div>
+
+          <div class="menu-heading">Admin</div>
+          <div class="nav-item" onclick="showSection('settings-section')">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </div>
+          <div class="nav-item" onclick="showSection('notifications-section')">
+            <i class="fas fa-bell"></i>
+            <span>Notifications</span>
+          </div>
+          <div class="nav-item" onclick="showSection('security-section')">
+            <i class="fas fa-shield-alt"></i>
+            <span>Security</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Header Section -->
+      <div class="header">
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search..." />
+        </div>
+        <div class="header-actions">
+          <!-- Notifications -->
+          <div class="notification">
+            <i class="fas fa-bell"></i>
+            <div class="badge">3</div>
+          </div>
+          <div class="notification">
+            <i class="fas fa-envelope"></i>
+            <div class="badge">5</div>
+          </div>
+
+          <!-- User Profile -->
+          <div class="user-profile">
+            <div class="profile-img">JD</div>
+            <div class="user-info">
+              <div class="user-name">John Doe</div>
+              <div class="user-role">Administrator</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content Section -->
+      <div class="main-content">
+        
+        <!-- Dashboard Section -->
+        <div id="dashboard-section" class="content-section">
+          <div class="page-title">
+            <div class="title">Dashboard</div>
+            <div class="action-buttons">
+              <button class="btn btn-outline">
+                <i class="fas fa-download"></i>
+                Export
+              </button>
+              <button class="btn btn-primary">
+                <i class="fas fa-plus"></i>
+                Add New
+              </button>
+            </div>
+          </div>
+
+          <!-- Statistics Cards For Dashboard-->
+          <div class="stats-cards">
+                    <!-- Total Income -->
+            <div class="stat-card">
+              <div class="card-header">
+                <div>
+                  <div class="card-value">1,504</div>
+                  <div class="card-label">Total Income</div>
+                </div>
+                <div class="card-icon purple">
+                  <i class="fas fa-users"></i>
+                </div>
+              </div>
+              <div class="card-change positive">
+                <i class="fas fa-arrow-up"></i>
+                <span>12.5% from last month</span>
+              </div>
+            </div>
+
+                  <!-- Month's Sale -->
+            <div class="stat-card">
+              <div class="card-header">
+                <div>
+                  <div class="card-value">324</div>
+                  <div class="card-label">This Month's Income</div>
+                </div>
+                <div class="card-icon green">
+                  <i class="fas fa-shopping-cart"></i>
+                </div>
+              </div>
+              <div class="card-change negative">
+                <i class="fas fa-arrow-down"></i>
+                <span>3.1% from last month</span>
+              </div>
+            </div>
+          
+                    <!-- Month's Expenses -->
+            <div class="stat-card">
+              <div class="card-header">
+                <div>
+                  <div class="card-value">85%</div>
+                  <div class="card-label">This Month's Expenses</div>
+                </div>
+                <div class="card-icon orange">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+              </div>
+              <div class="card-change positive">
+                <i class="fas fa-arrow-up"></i>
+                <span>4.6% from last month</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Users Section -->
+        <div id="users-section" class="content-section" style="display: none;">
+          <h2>User Management</h2>
+          <p>Manage users here.</p>
+        </div>
+
+        <!-- Sales Section -->
+        <div id="sales-section" class="content-section" style="display: none;">
+          <h2>Sales Data</h2>
+          <p>View your sales data.</p>
+        </div>
+
+        <!-- Expenses Section -->
+        <div id="expenses-section" class="content-section" style="display: none;">
+          <h2>Expense Reports</h2>
+          <p>View and manage expenses.</p>
+        </div>
+
+        <!-- Settings Section -->
+        <div id="settings-section" class="content-section" style="display: none;">
+          <h2>Settings</h2>
+          <p>Modify your system settings here.</p>
+        </div>
+
+        <!-- Notifications Section -->
+        <div id="notifications-section" class="content-section" style="display: none;">
+          <h2>Notifications</h2>
+          <p>Check your latest notifications.</p>
+        </div>
+
+        <!-- Security Section -->
+        <div id="security-section" class="content-section" style="display: none;">
+          <h2>Security</h2>
+          <p>Manage your security settings here.</p>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>

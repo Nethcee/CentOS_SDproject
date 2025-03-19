@@ -1,33 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Dashboard</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="dashboard.css" />
-    <script>
-      function showSection(sectionId) {
-        let sections = document.querySelectorAll(".content-section");
-        sections.forEach((section) => {
-          section.style.display = "none";
-        });
-        document.getElementById(sectionId).style.display = "block";
-      }
-    </script>
+        <!-- EXTERNAL FONTS -->
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet"
+          />
+        <link rel="stylesheet" href="dashboard.css" />
+
+          <script>
+            function showSection(sectionId) {
+              let sections = document.querySelectorAll(".content-section");
+              sections.forEach((section) => {
+                section.style.display = "none";
+              });
+              document.getElementById(sectionId).style.display = "block";
+            }
+          </script>
+
+          <!-- Google Charts Script -->
+          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+          <script>
+            google.charts.load('current', { 'packages': ['corechart'] });
+            google.charts.setOnLoadCallback(drawCharts);
+
+            function drawCharts() {
+              drawPieChart();
+              drawLineChart();
+            }
+
+            function drawPieChart() {
+            var data = google.visualization.arrayToDataTable([
+              ['Category', 'Sales'],
+              ['Technology', 11],
+              ['Cooking Items', 2],
+              ['Toys', 2],
+              ['Motor Parts', 2],
+              ['School Supplies', 7],
+              ['Furniture', 5],       // Bagong data
+              ['Clothes', 8],         // Bagong data
+              ['Shoes', 6],           // Bagong data
+              ['Accessories', 4]      // Bagong data
+            ]);
+
+            var options = {
+              title: 'HOT SELLING ITEMS',
+              pieHole: 0.4, // Donut chart effect
+              colors: ['#4285F4', '#34A853', '#FBBC05', '#EA4335', '#9B51E0', '#8E44AD', '#3498DB', '#F1C40F', '#2ECC71']
+              
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+          }
+
+          // Line Chart Function
+              function drawLineChart() {
+              var data = google.visualization.arrayToDataTable([
+                ['Month', 'Sales', 'Expenses'],
+                ['Jan',  20000,  15000],
+                ['Feb',  25000,  10000],
+                ['March',  15000,  20000],
+                ['April',  20000,  10000]
+              ]);
+
+              var options = {
+                title: 'Sales Vs Expenses',
+                curveType: 'function',
+                legend: { position: 'bottom' },
+                colors: ['#1E88E5', '#E53935'],
+                vAxis: {
+                  format: 'short', // Ensures readable format
+                  viewWindow: {
+                    min: 0,
+                    max: 30000
+                  },
+                  ticks: [0, 5000, 10000, 15000, 20000, 25000, 30000] // Custom Y-axis values
+                }
+              };
+
+              var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+              chart.draw(data, options);
+            }
+
+          </script>
   </head>
 
   <body>
@@ -36,13 +99,13 @@
       <!-- Sidebar Section -->
       <div class="sidebar">
         <div class="logo">
-          <h1>Admin<span>Panel</span></h1>
+          <h1>FM<span>System</span></h1>
         </div>
 
         <!-- Navigation Menu -->
         <div class="nav-menu">
           <div class="menu-heading">Main</div>
-          <div class="nav-item active" onclick="showSection('dashboard-section')">
+          <div class="nav-item" onclick="showSection('dashboard-section')">
             <i class="fas fa-chart-pie"></i>
             <span>Dashboard</span>
           </div>
@@ -71,6 +134,11 @@
           <div class="nav-item" onclick="showSection('security-section')">
             <i class="fas fa-shield-alt"></i>
             <span>Security</span>
+            </div>
+            <!--logout-->
+            <div class="nav-item logout"> 
+              <i class="fas fa-sign-out-alt"></i>
+              <span>Logout</span>
           </div>
         </div>
       </div>
@@ -94,125 +162,203 @@
 
           <!-- User Profile -->
           <div class="user-profile">
-            <div class="profile-img">JD</div>
+            <div class="profile-img">MR</div>
             <div class="user-info">
-              <div class="user-name">John Doe</div>
-              <div class="user-role">Administrator</div>
+              <div class="user-name">Marilou Rodriguez</div>
+              <div class="user-role">Business Owner</div>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Main Content Section -->
+
       <div class="main-content">
         
-        <!-- Dashboard Section -->
-        <div id="dashboard-section" class="content-section">
-          <div class="page-title">
-            <div class="title">Dashboard</div>
-            <div class="action-buttons">
-              <button class="btn btn-outline">
-                <i class="fas fa-download"></i>
-                Export
-              </button>
-              <button class="btn btn-primary">
-                <i class="fas fa-plus"></i>
-                Add New
-              </button>
+
+        <!---------------------- Dashboard Section -------------------->
+
+              <div id="dashboard-section" class="content-section">
+                <div class="page-title">
+                  <div class="title">Dashboard</div>
+                  <div class="action-buttons">
+                  </div>
+                </div>
+
+              <!-- Statistics Cards -->
+              <div class="stats-cards">
+                
+                <!-- Total Income -->
+                <div class="stat-card">
+                  <div class="card-header">
+                    <div>
+                      <div class="card-value">₱35,000</div>
+                      <div class="card-label">Total Income</div>
+                    </div>
+                    <div class="card-icon purple">
+                      <i class="fas fa-coins"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Month's Income -->
+                <div class="stat-card">
+                  <div class="card-header">
+                    <div>
+                      <div class="card-value">₱20,000</div>
+                      <div class="card-label">This Month's Income</div>
+                    </div>
+                    <div class="card-icon green">
+                      <i class="fas fa-money-bill"></i>
+                    </div>
+                  </div>
+                </div>
+
+              <!-- Month's Expenses -->
+              <div class="stat-card">
+                <div class="card-header">
+                  <div>
+                    <div class="card-value">₱13,000</div>
+                    <div class="card-label">This Month's Expenses</div>
+                  </div>
+                  <div class="card-icon orange">
+                    <i class="fas fa-money-bill"></i>
+                  </div>
+                </div>
+              </div>
+              </div>
+
+            <!-- Google Chart -->
+
+              <div class="chart-container">
+                <h2>STATISTICS GRAPH</h2>
+                <div class="charts-row">
+                  <!-- Pie Chart -->
+                  <div id="piechart"></div>
+
+                  <!-- Line Chart -->
+                  <div id="curve_chart"></div>
+                </div>
+              </div>
+              </div>
+              
+
+
+
+
+
+      <!---------------------- User Section -------------------->
+
+              <div id="users-section" class="content-section" style="display: none;">
+                <h2>User Information</h2>
+
+                <!-- User Info -->
+                <div class="user-info-container">
+                  <div class="user-info-card">
+                    <div class="user-info-header">
+                      <h3>Marilou Rodriguez</h3>
+                      <p class="user-role">Business Owner</p>
+                    </div>
+
+                    <div class="user-info-details">
+                      <div class="info-item">
+                        <strong>Name:</strong> Marilou Rodriguez
+                      </div>
+                      <div class="info-item">
+                        <strong>Number:</strong> 09123456789
+                      </div>
+                      <div class="info-item">
+                        <strong>Address:</strong> 123 Sample St., Quezon City, Philippines
+                      </div>
+                      <div class="info-item">
+                        <strong>Type of Business:</strong> Laz_Shopee
+                      </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+
+
+
+
+
+      <!---------------------- Sales Section -------------------->
+
+      <div id="sales-section" class="content-section" style="display: none;">
+        <h2>Sales Data</h2>
+        <p>View your sales data.</p>
+      
+        <h2>Sales Records</h2>
+        <table id="sales-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Type</th>
+              <th>Price</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody> <!-- This should exist -->
+        </table>
+        
+        <button id="add-row-btn">+ Add Row</button>
+      </div>
+      
+              <!-- Expenses Section -->
+              <div id="expenses-section" class="content-section" style="display: none;">
+                <h2>Expense Reports</h2>
+                <p>View and manage expenses.</p>
+              </div>
+
+
+
+
+
+
+      <!---------------------- Settings Section -------------------->
+
+              <div id="settings-section" class="content-section" style="display: none;">
+                <h2>Settings</h2>
+                <p>Modify your system settings here.</p>
+              </div>
+
+
+
+
+
+
+
+
+
+      <!---------------------- Notifications Section -------------------->
+
+            <div id="notifications-section" class="content-section" style="display: none;">
+              <h2>Notifications</h2>
+              <p>Check your latest notifications.</p>
             </div>
-          </div>
 
-          <!-- Statistics Cards For Dashboard-->
-          <div class="stats-cards">
-                    <!-- Total Income -->
-            <div class="stat-card">
-              <div class="card-header">
-                <div>
-                  <div class="card-value">1,504</div>
-                  <div class="card-label">Total Income</div>
-                </div>
-                <div class="card-icon purple">
-                  <i class="fas fa-users"></i>
-                </div>
-              </div>
-              <div class="card-change positive">
-                <i class="fas fa-arrow-up"></i>
-                <span>12.5% from last month</span>
-              </div>
-            </div>
 
-                  <!-- Month's Sale -->
-            <div class="stat-card">
-              <div class="card-header">
-                <div>
-                  <div class="card-value">324</div>
-                  <div class="card-label">This Month's Income</div>
-                </div>
-                <div class="card-icon green">
-                  <i class="fas fa-shopping-cart"></i>
-                </div>
-              </div>
-              <div class="card-change negative">
-                <i class="fas fa-arrow-down"></i>
-                <span>3.1% from last month</span>
-              </div>
-            </div>
-          
-                    <!-- Month's Expenses -->
-            <div class="stat-card">
-              <div class="card-header">
-                <div>
-                  <div class="card-value">85%</div>
-                  <div class="card-label">This Month's Expenses</div>
-                </div>
-                <div class="card-icon orange">
-                  <i class="fas fa-chart-line"></i>
-                </div>
-              </div>
-              <div class="card-change positive">
-                <i class="fas fa-arrow-up"></i>
-                <span>4.6% from last month</span>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <!-- Users Section -->
-        <div id="users-section" class="content-section" style="display: none;">
-          <h2>User Management</h2>
-          <p>Manage users here.</p>
-        </div>
 
-        <!-- Sales Section -->
-        <div id="sales-section" class="content-section" style="display: none;">
-          <h2>Sales Data</h2>
-          <p>View your sales data.</p>
-        </div>
 
-        <!-- Expenses Section -->
-        <div id="expenses-section" class="content-section" style="display: none;">
-          <h2>Expense Reports</h2>
-          <p>View and manage expenses.</p>
-        </div>
 
-        <!-- Settings Section -->
-        <div id="settings-section" class="content-section" style="display: none;">
-          <h2>Settings</h2>
-          <p>Modify your system settings here.</p>
-        </div>
 
-        <!-- Notifications Section -->
-        <div id="notifications-section" class="content-section" style="display: none;">
-          <h2>Notifications</h2>
-          <p>Check your latest notifications.</p>
-        </div>
 
-        <!-- Security Section -->
-        <div id="security-section" class="content-section" style="display: none;">
-          <h2>Security</h2>
-          <p>Manage your security settings here.</p>
-        </div>
+      <!---------------------- Security Section -------------------->
+      
+                  <div id="security-section" class="content-section" style="display: none;">
+                    <h2>Security</h2>
+                    <p>Manage your security settings here.</p>
+                  </div>
+      
+       <!---------------------- Logout Section -------------------->
+                  <div id="logout-section" class="content-section" style="display: none;">
+                    <h2>Security</h2>
+                    <p>Manage your security settings here.</p>
+                  </div>
 
+                  
       </div>
     </div>
   </body>

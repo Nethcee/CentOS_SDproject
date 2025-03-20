@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="login.css" />
+  <link rel="icon" type="image/x-icon" href="assets/favicon.png">
+  <title>Login Page</title>
+</head>
+<body>
+
+  <h1 class="header-title">Welcome to Financial Management System</h1> <!-- Title moved here -->
+
+  <div class="container" id="loginContainer">
+    <p>Log in to continue</p>
+    <!-- Wrap inputs and button in a form -->
+    <form id="loginForm">
+      <input type="text" class="username-input" id="username" placeholder="Username" />
+      <input type="password" class="password-input" id="password" placeholder="Password" />
+      <button type="submit">Login</button>
+    </form>
+    <p><a href="#" onclick="forgotPassword()">Forgot Password?</a></p>
+    <p>Don't have an account? <a href="#" onclick="signUp()">Sign Up</a></p>
+  </div>
+
+  <div class="container hidden" id="signupContainer">
+    <h2>Create your account</h2>
+    <input type="text" id="newUsername" placeholder="Enter a username" />
+    <input type="password" id="newPassword" placeholder="Enter a password" />
+    <input type="email" id="email" placeholder="Enter your email" />
+    <button onclick="createAccount()">Sign Up</button>
+    <p>Already have an account? <a href="#" onclick="showLogin()">Login here</a></p>
+  </div>
+
+  <script>
+    function forgotPassword() {
+      const username = document.getElementById('username').value;
+      if (username) {
+        alert(`Password reset link has been sent to the email associated with ${username}.`);
+      } else {
+        alert('Please enter your username to reset your password.');
+      }
+    }
+
+    // Login Form Submission
+    document.getElementById("loginForm").addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent form submission
+
+      let username = document.getElementById("username").value;
+      let password = document.getElementById("password").value;
+
+      // Sample authentication (Replace with real backend logic)
+      if (username === "admin" && password === "1234") {
+          localStorage.setItem("loggedIn", "true"); // Save session
+          window.location.href = "dashboard.html"; // Redirect to dashboard
+      } else {
+          alert("Invalid login credentials. Try again.");
+      }
+    });
+
+    function signUp() {
+      document.getElementById('loginContainer').classList.add('hidden');
+      document.getElementById('signupContainer').classList.remove('hidden');
+    }
+
+    function showLogin() {
+      document.getElementById('signupContainer').classList.add('hidden');
+      document.getElementById('loginContainer').classList.remove('hidden');
+    }
+
+    function createAccount() {
+      const username = document.getElementById('newUsername').value;
+      const password = document.getElementById('newPassword').value;
+      const email = document.getElementById('email').value;
+      if (username && password && email) {
+        alert(`Account created successfully for ${username}!`);
+        showLogin();
+      } else {
+        alert('Sign-up failed. Please provide valid credentials.');
+      }
+    }
+  </script>
+
+</body>
+</html>

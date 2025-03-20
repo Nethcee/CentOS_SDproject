@@ -61,4 +61,18 @@ window.onload = function () {
       }
     });
   }
+
+    document.getElementById("logout-btn").addEventListener("click", function () {
+        // Clear session storage (or local storage if using local authentication)
+        sessionStorage.clear();
+        localStorage.removeItem("userToken"); // Remove token if stored
+
+        // Redirect to login page
+        window.location.href = "login.html"; // Change to your login page URL
+    });
+    
+
 };
+
+
+

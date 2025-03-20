@@ -14,7 +14,7 @@
           rel="stylesheet"
           />
         <link rel="stylesheet" href="dashboard.css" />
-
+        <link rel="icon" type="image/x-icon" href="assets/favicon.png">
           <script>
             function showSection(sectionId) {
               let sections = document.querySelectorAll(".content-section");
@@ -111,7 +111,7 @@
           </div>
           <div class="nav-item" onclick="showSection('users-section')">
             <i class="fas fa-users"></i>
-            <span>Users</span>
+            <span>User</span>
           </div>
           <div class="nav-item" onclick="showSection('sales-section')">
             <i class="fas fa-coins"></i>
@@ -127,10 +127,6 @@
             <i class="fas fa-cog"></i>
             <span>Settings</span>
           </div>
-          <div class="nav-item" onclick="showSection('notifications-section')">
-            <i class="fas fa-bell"></i>
-            <span>Notifications</span>
-          </div>
           <div class="nav-item" onclick="showSection('security-section')">
             <i class="fas fa-shield-alt"></i>
             <span>Security</span>
@@ -143,33 +139,27 @@
         </div>
       </div>
 
-      <!-- Header Section -->
-      <div class="header">
-        <div class="search-bar">
-          <i class="fas fa-search"></i>
-          <input type="text" placeholder="Search..." />
-        </div>
-        <div class="header-actions">
-          <!-- Notifications -->
-          <div class="notification">
-            <i class="fas fa-bell"></i>
-            <div class="badge">3</div>
+        <!-- Header Section -->
+        <div class="header">
+          <div class="search-bar">
+              <i class="fas fa-search"></i>
+              <input type="text" placeholder="Search..." />
           </div>
-          <div class="notification">
-            <i class="fas fa-envelope"></i>
-            <div class="badge">5</div>
-          </div>
+          <div class="header-actions">
 
-          <!-- User Profile -->
-          <div class="user-profile">
-            <div class="profile-img">MR</div>
-            <div class="user-info">
-              <div class="user-name">Marilou Rodriguez</div>
-              <div class="user-role">Business Owner</div>
-            </div>
+
+
+              <!-- User Profile -->
+              <div class="user-profile">
+                  <div class="profile-img">MR</div>
+                  <div class="user-info">
+                      <div class="user-name">Marilou Rodriguez</div>
+                      <div class="user-role">Business Owner</div>
+                  </div>
+              </div>
           </div>
         </div>
-      </div>
+
 
       <!-- Main Content Section -->
 
@@ -181,9 +171,8 @@
               <div id="dashboard-section" class="content-section">
                 <div class="page-title">
                   <div class="title">Dashboard</div>
-                  <div class="action-buttons">
-                  </div>
                 </div>
+              
 
               <!-- Statistics Cards -->
               <div class="stats-cards">
@@ -247,119 +236,176 @@
 
 
 
-      <!---------------------- User Section -------------------->
+        <!---------------------- User Section -------------------->
 
-              <div id="users-section" class="content-section" style="display: none;">
-                <h2>User Information</h2>
+                <div id="users-section" class="content-section" style="display: none;">
+                  <h2>User Information</h2>
 
-                <!-- User Info -->
-                <div class="user-info-container">
-                  <div class="user-info-card">
-                    <div class="user-info-header">
-                      <h3>Marilou Rodriguez</h3>
-                      <p class="user-role">Business Owner</p>
-                    </div>
+                  <!-- User Info -->
+                  <div class="user-info-container">
+                    <div class="user-info-card">
+                      <div class="user-info-header">
+                        <h3>Marilou Rodriguez</h3>
+                        <p class="user-role">Business Owner</p>
+                      </div>
 
-                    <div class="user-info-details">
-                      <div class="info-item">
-                        <strong>Name:</strong> Marilou Rodriguez
+                      <div class="user-info-details">
+                        <div class="info-item">
+                          <strong>Name:</strong> Marilou Rodriguez
+                        </div>
+                        <div class="info-item">
+                          <strong>Number:</strong> 09391453365
+                        </div>
+                        <div class="info-item">
+                          <strong>Address:</strong> Blk 23 Lot 3 Muzon, Mt View Subd, CSJDM, Bulacan
+                        </div>
+                        <div class="info-item">
+                          <strong>Type of Business:</strong> Laz_Shopee
+                        </div>
+                        </div>
                       </div>
-                      <div class="info-item">
-                        <strong>Number:</strong> 09123456789
-                      </div>
-                      <div class="info-item">
-                        <strong>Address:</strong> 123 Sample St., Quezon City, Philippines
-                      </div>
-                      <div class="info-item">
-                        <strong>Type of Business:</strong> Laz_Shopee
-                      </div>
-                      </div>
-                    </div>
+                  </div>
                 </div>
-              </div>
 
 
 
 
 
-      <!---------------------- Sales Section -------------------->
+        <!---------------------- Sales Section ---------------------->
 
-      <div id="sales-section" class="content-section" style="display: none;">
-        <h2>Sales Data</h2>
-        <p>View your sales data.</p>
-      
-        <h2>Sales Records</h2>
-        <table id="sales-table">
-          <thead>
-            <tr>
-              <th>Product</th>
-              <th>Type</th>
-              <th>Price</th>
-              <th>Date</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody></tbody> <!-- This should exist -->
-        </table>
-        
-        <button id="add-row-btn">+ Add Row</button>
-      </div>
-      
-              <!-- Expenses Section -->
-              <div id="expenses-section" class="content-section" style="display: none;">
-                <h2>Expense Reports</h2>
-                <p>View and manage expenses.</p>
-              </div>
+                    <div id="sales-section" class="content-section" style="display: none;">
+                      <form id="sales-form">
+                          <h3>SALES</h3>
 
+                          <label for="sales-item">Item</label>
+                          <select id="sales-item" name="sales-item" required>
+                              <option value="">Select an item</option>
+                              <option value="technology">Technology</option>
+                              <option value="cooking">Cooking Item</option>
+                              <option value="toys">Toys</option>
+                              <option value="motor">Motor Parts</option>
+                              <option value="school">School Supplies</option>
+                              <option value="furniture">Furniture</option>
+                              <option value="clothes">Clothes</option>
+                              <option value="shoes">Shoes</option>
+                              <option value="accessories">Accessories</option>
+                          </select>
 
+                          <label for="sales-quantity">Quantity</label>
+                          <input type="number" id="sales-quantity" name="sales-quantity" min="1" required>
 
+                          <label for="sales-price">Price</label>
+                          <input type="number" id="sales-price" name="sales-price" min="0.01" step="0.01" required>
 
+                          <button type="submit">Add Sale</button>
+                      </form>
 
-
-      <!---------------------- Settings Section -------------------->
-
-              <div id="settings-section" class="content-section" style="display: none;">
-                <h2>Settings</h2>
-                <p>Modify your system settings here.</p>
-              </div>
-
-
-
-
-
-
-
-
-
-      <!---------------------- Notifications Section -------------------->
-
-            <div id="notifications-section" class="content-section" style="display: none;">
-              <h2>Notifications</h2>
-              <p>Check your latest notifications.</p>
-            </div>
+                      <h3>Sales Records</h3>
+                      <table id="sales-table">
+                          <thead>
+                              <tr>
+                                  <th>Item</th>
+                                  <th>Quantity</th>
+                                  <th>Price</th>
+                                  <th>Total</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <!-- Sales entries will be added here -->
+                          </tbody>
+                      </table>
+                    </div>
 
 
 
 
 
+        <!---------------------- Expenses Section ---------------------->
+
+                <div id="expenses-section" class="content-section" style="display: none;">
+                  <form id="expenses-form">
+                      <h3>EXPENSES</h3>
+
+                      <label for="expense-category">Category</label>
+                      <select id="expense-category" name="expense-category" required>
+                          <option value="">Select a category</option>
+                          <option value="purchases">Purchases</option>
+                          <option value="storage">Storage</option>
+                          <option value="delivery">Delivery</option>
+                          <option value="rent">Rent</option>
+                          <option value="utilities">Utilities</option>
+                          <option value="salary">Employee Salary</option>
+                          <option value="marketing">Marketing</option>
+                          <option value="maintenance">Maintenance</option>
+                          <option value="other">Other</option>
+                      </select>
+
+                      <label for="expense-amount">Amount</label>
+                      <input type="number" id="expense-amount" name="expense-amount" min="0.01" step="0.01" required>
+
+                      <label for="expense-date">Date</label>
+                      <input type="date" id="expense-date" name="expense-date" required>
+
+                      <button type="submit">Add Expense</button>
+                  </form>
+
+                  <h3>Expense Records</h3>
+                  <table id="expenses-table">
+                      <thead>
+                          <tr>
+                              <th>Category</th>
+                              <th>Amount</th>
+                              <th>Date</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <!-- Expense entries will be added here -->
+                      </tbody>
+                  </table>
+                </div>
 
 
 
-      <!---------------------- Security Section -------------------->
-      
-                  <div id="security-section" class="content-section" style="display: none;">
-                    <h2>Security</h2>
-                    <p>Manage your security settings here.</p>
+
+
+
+
+         <!---------------------- Settings Section -------------------->
+
+                            <div id="settings-section" class="content-section" style="display: none;">
+                              <h2>Settings</h2>
+                              <p>Modify your system settings here.</p>
+                            </div>
+
+
+
+
+
+        <!---------------------- Security Section -------------------->
+                    
+                                <div id="security-section" class="content-section" style="display: none;">
+                                  <h2>Security</h2>
+                                  <p>Manage your security settings here.</p>
+                                </div>
+                    
+
+
+
+
+
+
+        <!---------------------- Logout Section -------------------->
+                                <div id="logout-section" class="content-section" style="display: none;">
+                                  <h2>Security</h2>
+                                  <p>Manage your security settings here.</p>
+                                </div>
+
+                                
+
+
+
+
+                    </div>
                   </div>
-      
-       <!---------------------- Logout Section -------------------->
-                  <div id="logout-section" class="content-section" style="display: none;">
-                    <h2>Security</h2>
-                    <p>Manage your security settings here.</p>
-                  </div>
-
-                  
-      </div>
-    </div>
-  </body>
-</html>
+                </body>
+              </html>

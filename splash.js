@@ -17,6 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Redirect after animations finish + 1 extra second for visibility
     setTimeout(() => {
-        window.location.href = "index.html";
+        window.location.href = "log-in.html";
     }, 4000); // Now 4s instead of 3s
 });

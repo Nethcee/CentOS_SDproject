@@ -53,12 +53,39 @@ window.onload = function () {
   }
 
   // ✅ LOGOUT FUNCTIONALITY
-  const logoutBtn = document.querySelector(".logout");
+  window.onload = function () {
+    // ... your existing code ...
+  
+    const logoutBtn = document.querySelector(".logout a"); // select the <a> inside the .logout container
   if (logoutBtn) {
-    logoutBtn.addEventListener("click", function () {
+    logoutBtn.addEventListener("click", function (e) {
+      e.preventDefault(); // prevent the default link action if you want to handle it via JS
       if (confirm("Are you sure you want to log out?")) {
-        window.location.href = "login.html";
+        // Optionally clear storage if you use it for authentication tokens
+        sessionStorage.clear();
+        localStorage.clear();
+        // Redirect to the login page (you can change the URL as needed)
+        window.location.href = "login.html"; // or "login.php" if that's your login file
       }
     });
   }
+  
+    // ... rest of your code ...
+  };
+  
+
+    document.getElementById("logout-btn").addEventListener("click", function () {
+        // Clear session storage (or local storage if using local authentication)
+        sessionStorage.clear();
+        localStorage.removeItem("userToken"); // Remove token if stored
+
+        // Redirect to login page
+        window.location.href = "login.html"; // Change to your login page URL
+    });
+    
+
 };
+
+
+
+

@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 include 'config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -8,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $price = $_POST['sales-price'];
     $total = $quantity * $price;
 
-    $stmt = $conn->prepare("INSERT INTO sales (item, type, quantity, price, total) VALUES (?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO salesrecords (item, type, quantity, price, total) VALUES (?, ?, ?, ?, ?)");
     $stmt->bind_param("ssidd", $item, $type, $quantity, $price, $total);
 
     if ($stmt->execute()) {

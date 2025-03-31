@@ -999,46 +999,62 @@ button:hover {
 }
 
 /* Sales Section */
-#sales-section {
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-  background: #f8f9fa;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
+/* Sales Form - Horizontal Layout */
 #sales-form {
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  align-items: center !important;
+  gap: 20px !important;
+  margin: 20px 0 !important;
+  width: 100% !important;
+  justify-content: flex-start !important;
+  background: transparent !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
-#sales-form label {
-  margin-top: 10px;
-  font-weight: bold;
+/* Make the Item textbox longer */
+#sales-item {
+  width: 300px !important; /* Adjust the size as needed */
 }
 
+/* Keep the existing styling for inputs, select, and button */
+#sales-form select,
 #sales-form input,
+#sales-form button {
+  height: 40px !important;
+  padding: 10px !important;
+  border: 1px solid #ddd !important;
+  border-radius: 6px !important;
+  font-size: 14px !important;
+  box-sizing: border-box;
+}
+
 #sales-form select {
-  padding: 8px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  width: 180px;
+}
+
+#sales-form input {
+  width: 120px;
 }
 
 #sales-form button {
-  margin-top: 15px;
-  padding: 10px;
-  background: #0056b3;
-  color: white;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  background-color: #34A853 !important;
+  color: white !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s !important;
+  padding: 0 20px !important;  /* Only horizontal padding */
+  min-width: 120px !important;  /* Ensure it's long enough */
+  text-align: center !important;
+  display: flex !important;
+  align-items: center !important;  /* Center content vertically */
+  justify-content: center !important; /* Center content horizontally */
+  margin: 0 !important;
 }
 
 #sales-form button:hover {
-  background: #0056b3;
+  background-color: #2a8c44;
 }
 
 /* Sales Table */
@@ -1046,6 +1062,7 @@ button:hover {
   width: 100%;
   margin-top: 20px;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 #sales-table th, 
@@ -1055,19 +1072,96 @@ button:hover {
   text-align: left;
 }
 
+/* Header Styling */
 #sales-table th {
   background: #28a745;
   color: white;
 }
 
+/* Sales Table */
+#sales-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  table-layout: fixed; /* Force the table to respect defined widths */
+}
+
+#sales-table th, 
+#sales-table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Header Styling */
+#sales-table th {
+  background: #28a745;
+  color: white;
+}
+
+/* Even Row Styling */
 #sales-table tbody tr:nth-child(even) {
   background: #f2f2f2;
 }
 
+/* Date Column (first column) Width - adjusted to about 70px for a date like 30/03/2025 */
+#sales-table th:first-child,
+#sales-table td:first-child {
+  width: 70px !important;
+}
+
+/* Item Column (2nd column) */
+#sales-table th:nth-child(2),
+#sales-table td:nth-child(2) {
+  width: 25%;
+}
+
+/* Type Column (3rd column) */
+#sales-table th:nth-child(3),
+#sales-table td:nth-child(3) {
+  width: 15%;
+}
+
+/* Quantity Column (4th column) */
+#sales-table th:nth-child(4),
+#sales-table td:nth-child(4) {
+  width: 10%;
+}
+
+/* Price Column (5th column) */
+#sales-table th:nth-child(5),
+#sales-table td:nth-child(5) {
+  width: 15%;
+}
+
+/* Total Column (6th column) */
+#sales-table th:nth-child(6),
+#sales-table td:nth-child(6) {
+  width: 15%;
+}
+
+
+
+#sales-section h3:last-of-type {
+  margin-top: 30px;
+}
+
 #sales-section h3 {
-  font-size: 2rem; /* Adjust size as needed */
+  font-size: 3rem; /* Adjust size as needed */
   text-align: center;
   font-weight: bold;
+}
+
+#sales-section h3:first-of-type {
+  text-align: left !important;
+}
+
+#sales-section h3:nth-of-type(2) {
+  margin-top: 60px !important;
+  text-align: left;
 }
 
 #expenses-section h3 {
@@ -1076,20 +1170,17 @@ button:hover {
   font-weight: bold;
 }
 
-/* Style for the logout button inside the sidebar */
-.nav-item.logout a:link,
-.nav-item.logout a:visited,
-.nav-item.logout a:hover,
-.nav-item.logout a:active {
+/* Logout Button Styling */
+.nav-item.logout a {
+  display: flex;
+  align-items: center;
+  width: 100%;
   color: white !important;
-  background-color: transparent !important;
-  border-left-color: transparent !important;
   text-decoration: none !important;
 }
 
-/* Override the parent hover for the logout nav-item so no purple border appears */
 .nav-item.logout:hover,
 .nav-item.logout:active {
-  background-color: transparent !important;
-  border-left-color: transparent !important;
+  background-color: rgba(255, 255, 255, 0.07) !important;
+  border-left-color: var(--primary-light) !important;
 }
